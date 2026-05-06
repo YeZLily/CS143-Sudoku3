@@ -112,8 +112,13 @@ public class SudokuBoard {
     }
 
     public boolean isSolved() {
-        if (!isValid())
+        if (!isValid()) {
             return false;
+        }
+        if (isValid()) {
+            return true;
+        }
+    }
 
         Map < Integer, Integer > map = new HashMap < > ();
 
