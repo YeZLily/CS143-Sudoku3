@@ -165,3 +165,14 @@ public class SudokuBoard {
         return result;
     }
 }
+
+public boolean solve() {
+    if(!isValid()) {
+        return false;
+    }
+    if(isValid()) {
+        return true;
+    }
+}
+
+
