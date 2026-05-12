@@ -170,7 +170,7 @@ public class SudokuBoard {
         if(!isValid()) {
             return false;
         }
-        if(isValid()) {
+        if(isSolved()) {
             return true;
         }
 
@@ -218,5 +218,4 @@ public class SudokuBoard {
         return result;
     }
 }
-
 
