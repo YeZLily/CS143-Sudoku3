@@ -180,7 +180,7 @@ public class SudokuBoard {
                     for (int num = 1; num <= 9; num++) {
                         board[r][c] = num;
 
-                        if (solve()) {
+                        if (isValid() && solve()) {
                             return true;
                         }
                         board[r][c] = 0;
@@ -218,4 +218,3 @@ public class SudokuBoard {
         return result;
     }
 }
-
