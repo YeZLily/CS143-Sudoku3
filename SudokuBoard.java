@@ -154,6 +154,38 @@ public class SudokuBoard {
         return true;
     }
 
+    // Attempts to solve the Sudoku board using recursive backtracking.
+    // First checks if the board is invalid or already solved.
+    // If the board is incomplete but valid, it finds an empty spot,
+    // tries numbers 1 through 9, and recursively checks if that choice can lead to a solution.
+    // If a number doesn't work, it resets the spot back to 0 and tries another number.
+    
+    public boolean solve() {
+        if(!isValid()) {
+            return false;
+        }
+        if(isValid()) {
+            return true;
+        }
+
+        for (int r = 0; r < board.length; r++) {
+            for(int c = 0; c < board[0].length; c++) {
+                if(board[r][c] == 0) {
+                    for (int num = 1; num <= 9; num++) {
+                        board[r][c] = num;
+
+                        if (solve()) {
+                            return true;
+                        }
+                        board[r][c] = 0;
+                    }
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
     // Turns the Sudoku board into a printable String.
     public String toString() {
         String result = "";
@@ -180,13 +212,5 @@ public class SudokuBoard {
     }
 }
 
-public boolean solve() {
-    if(!isValid()) {
-        return false;
-    }
-    if(isValid()) {
-        return true;
-    }
-}
 
 
