@@ -30,6 +30,9 @@ public class SudokuBoard {
         }
     }
 
+    // Checks if the current board is a valid Sudoku board.
+    //It first checks that all values are allowed number.
+    // Then in checks rows, columns, and 3x3 boxes for repeated numbers.
     public boolean isValid() {
         if (!checkNumbers())
             return false;
@@ -43,6 +46,7 @@ public class SudokuBoard {
         return true;
     }
 
+    // Checks that every value on the baord is between 0 and 9 (0 - 9).
     private boolean checkNumbers() {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
@@ -55,6 +59,8 @@ public class SudokuBoard {
         return true;
     }
 
+    // Checks every row for repeated numbers.
+    // Ignores 0 because empty spaces shouldn't count as duplicates.
     private boolean checkRow() {
         for (int r = 0; r < board.length; r++) {
             Set < Integer > set = new HashSet < > ();
@@ -72,6 +78,8 @@ public class SudokuBoard {
         return true;
     }
 
+    // Checks every column for repeated numbers.
+    // Uses a new set for each column and ignores empty spaces.
     private boolean checkCol() {
         for (int r = 0; r < board.length; r++) {
             Set < Integer > set = new HashSet < > ();
@@ -88,6 +96,8 @@ public class SudokuBoard {
         return true;
     }
 
+    // Checks each 3x3 mini squares for repeated numbers.
+    // Goes thorough each box and uses a set to remmeber which numbers.
     private boolean checkBox() {
         for (int boxRow = 0; boxRow < 3; boxRow++) {
             for (int boxCol = 0; boxCol <
@@ -111,6 +121,9 @@ public class SudokuBoard {
         return true;
     }
 
+    // Checks if the board is completely solver.
+    // The board must first be valid. 
+    // Then each number from 0 to 9 must appear exactly 9 times.
     public boolean isSolved() {
             if (!isValid())
                 return false;
@@ -141,6 +154,7 @@ public class SudokuBoard {
         return true;
     }
 
+    // Turns the Sudoku board into a printable String.
     public String toString() {
         String result = "";
         String line = "+-------+-------+-------+\n";
