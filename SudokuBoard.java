@@ -4,10 +4,15 @@ import java.io.*;
 public class SudokuBoard {
     private int[][] board;
 
+    // Creates a blank Sudoku board.
+    // It makes a 9 by 9 int array, where 0 means the spot is empty.
     public SudokuBoard() {
         board = new int[9][9];
     }
 
+    // Creates a Sudoku board from a file.
+    // It reads each row from the file and stores digits in the board array.
+    // A dot in the file is stored as 0 because that means the spot is empty.
     public SudokuBoard(String fileName) {
         this();
         try {
@@ -31,8 +36,8 @@ public class SudokuBoard {
     }
 
     // Checks if the current board is a valid Sudoku board.
-    //It first checks that all values are allowed number.
-    // Then in checks rows, columns, and 3x3 boxes for repeated numbers.
+    // It first checks that all values are allowed numbers.
+    // Then it checks rows, columns, and 3x3 boxes for repeated numbers.
     public boolean isValid() {
         if (!checkNumbers())
             return false;
@@ -46,7 +51,8 @@ public class SudokuBoard {
         return true;
     }
 
-    // Checks that every value on the baord is between 0 and 9 (0 - 9).
+    // Checks that every value on the board is between 0 and 9.
+    // It looks at every cell and returns false if any value is outside that range.
     private boolean checkNumbers() {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
@@ -96,8 +102,8 @@ public class SudokuBoard {
         return true;
     }
 
-    // Checks each 3x3 mini squares for repeated numbers.
-    // Goes thorough each box and uses a set to remmeber which numbers.
+    // Checks each 3x3 mini square for repeated numbers.
+    // It goes through each box and uses a set to remember which numbers were found.
     private boolean checkBox() {
         for (int boxRow = 0; boxRow < 3; boxRow++) {
             for (int boxCol = 0; boxCol <
@@ -121,9 +127,9 @@ public class SudokuBoard {
         return true;
     }
 
-    // Checks if the board is completely solver.
+    // Checks if the board is completely solved.
     // The board must first be valid. 
-    // Then each number from 0 to 9 must appear exactly 9 times.
+    // Then each number from 1 to 9 must appear exactly 9 times.
     public boolean isSolved() {
             if (!isValid())
                 return false;
@@ -187,6 +193,7 @@ public class SudokuBoard {
     }
 
     // Turns the Sudoku board into a printable String.
+    // It adds grid lines and prints empty spots as dashes.
     public String toString() {
         String result = "";
         String line = "+-------+-------+-------+\n";
@@ -211,6 +218,5 @@ public class SudokuBoard {
         return result;
     }
 }
-
 
 
