@@ -2,7 +2,7 @@
 public class SudokuSolverEngine {
 
    public static void main(String[] args) {
-      SudokuBoard board = new SudokuBoard("very-fast-solve.sdk");
+      SudokuBoard board = new SudokuBoard("boards/very-fast-solve.sdk");
       System.out.println("Initial board");
       System.out.println(board);
       System.out.println();
